@@ -1,0 +1,2 @@
+# ModelContextProtocol
+MCPでaiに繋ぎ、aiを操作してunityで何かをやる
