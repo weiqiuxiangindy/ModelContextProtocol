@@ -13,10 +13,10 @@ public abstract class ViewController<TModel, TView> : UIStackElement
     protected TModel Model => _model;
 
     [Inject]
-    public void BaseConstruct(TModel model)
+    public void BaseConstruct(TModel model, TView view)
     {
-        _view = GetComponent<TView>();
         _model = model;
+        _view = view;
     }
 
     public override void Init()
@@ -31,5 +31,11 @@ public abstract class ViewController<TModel, TView> : UIStackElement
 
     protected virtual void OnStart()
     {
+    }
+    
+    protected void HideBase()
+    {
+        Destroy(gameObject);
+        UIStack.Pop();
     }
 }

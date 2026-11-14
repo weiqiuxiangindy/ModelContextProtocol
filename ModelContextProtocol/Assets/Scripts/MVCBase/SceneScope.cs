@@ -15,6 +15,7 @@ public abstract class SceneScope<TModel, TView, TViewController> : LifetimeScope
     protected override void Configure(IContainerBuilder builder)
     {
         builder.Register<TModel>(Lifetime.Scoped);
+        builder.RegisterComponent(GetComponent<TView>());
         builder.RegisterComponent(GetComponent<TViewController>());
     }
 }

@@ -8,4 +8,9 @@ public class HomeModel : BaseModel
     {
         _loader = loader;
     }
+
+    public override void Init()
+    {
+        _loader.LoadAsset<Sprite>("Assets/Scenes/Home.png");
+    }
 }

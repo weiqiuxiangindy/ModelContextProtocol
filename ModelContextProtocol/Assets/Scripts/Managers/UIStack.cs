@@ -5,11 +5,32 @@ public class UIStack : MonoBehaviour
 #nullable disable
     [SerializeField] Transform _blocker;
 #nullable enable
+    int _elementCount;
     
-    public void Push(UIStackElement elementPrefab)
+    public T Push<T>(T prefab) where T : UIStackElement
     {
-        var controller = Instantiate(elementPrefab, transform);
-        _blocker.SetSiblingIndex(controller.transform.GetSiblingIndex());
+        PlusElementCount();
+        
+        var controller = Instantiate(prefab, transform);
+        controller.UIStack = this;
         controller.Init();
+        return controller;
+    }
+
+    public void Pop()
+    {
+        MinusElementCount();
+    }
+
+    void PlusElementCount()
+    {
+        _elementCount++;
+        _blocker.SetSiblingIndex(_elementCount - 1);
+    }
+    
+    void MinusElementCount()
+    {
+        _elementCount--;
+        _blocker.SetSiblingIndex(_elementCount - 1);
     }
 }

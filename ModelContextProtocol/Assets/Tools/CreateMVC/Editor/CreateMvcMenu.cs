@@ -105,7 +105,10 @@ public class {prefix}Scope : SceneScope<{prefix}Model, {prefix}View, {prefix}Vie
 "),
             (prefix + "Model", $@"public class {prefix}Model : BaseModel
 {{
-    
+    public override void Init()
+    {{
+        
+    }}
 }}
 "),
             (prefix + "View", $@"public class {prefix}View : BaseView

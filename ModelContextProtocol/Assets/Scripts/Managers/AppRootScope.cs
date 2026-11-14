@@ -4,20 +4,25 @@ using VContainer.Unity;
 
 public class AppRootScope : LifetimeScope
 {
-    public static AppRootScope Instance { get; private set; }
-
+    IAssetLoader _assetLoader = null!;
+    SceneTransitionManager _sceneTransitionManager = null!;
+    public static AppRootScope Instance { get; private set; } = null!;
+    
     protected override void Awake()
     {
         Instance = this;
         base.Awake();
     }
+
+    public void SetInstances(IAssetLoader assetLoader, SceneTransitionManager sceneTransitionManager)
+    {
+        _assetLoader = assetLoader;
+        _sceneTransitionManager = sceneTransitionManager;
+    }
     
     protected override void Configure(IContainerBuilder builder)
     {
-#if UNITY_EDITOR
-        builder.Register<IAssetLoader, EditorAssetLoader>(Lifetime.Singleton);
-#else
-        builder.Register<IAssetLoader, RuntimeAssetLoader>(Lifetime.Singleton);
-#endif
+        builder.RegisterInstance(_assetLoader);
+        builder.RegisterInstance(_sceneTransitionManager);
     }
 }

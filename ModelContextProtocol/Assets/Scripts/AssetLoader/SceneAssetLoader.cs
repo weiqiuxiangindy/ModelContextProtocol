@@ -6,8 +6,7 @@ using Object = UnityEngine.Object;
 public class SceneAssetLoader : IDisposable
 {
     readonly IAssetLoader _loader;
-
-    [Inject]
+    
     public SceneAssetLoader(IAssetLoader loader)
     {
         _loader = loader;

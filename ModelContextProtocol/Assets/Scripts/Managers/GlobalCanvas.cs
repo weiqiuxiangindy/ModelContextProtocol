@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class GlobalCanvas : MonoBehaviour
 {
 #nullable disable
-    [SerializeField] UIStack _uiStack;    
+    [SerializeField] UIStack _uiStack;
+    [SerializeField] Camera _uiCamera;
 #nullable enable
     
     static GlobalCanvas _instance = null!;
@@ -23,5 +25,16 @@ public class GlobalCanvas : MonoBehaviour
     void Awake()
     {
         _instance = this;
+    }
+
+    public void StackUICamera()
+    {
+        var mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            Debug.LogError("MainCamera is null");
+            return;
+        }
+        mainCamera.GetUniversalAdditionalCameraData().cameraStack.Add(_uiCamera);
     }
 }
