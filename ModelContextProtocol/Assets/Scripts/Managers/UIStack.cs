@@ -17,9 +17,10 @@ public class UIStack : MonoBehaviour
         return controller;
     }
 
-    public void Pop()
+    public void Pop(GameObject instance)
     {
         MinusElementCount();
+        Destroy(instance);
     }
 
     void PlusElementCount()

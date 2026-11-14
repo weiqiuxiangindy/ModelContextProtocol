@@ -35,7 +35,6 @@ public abstract class ViewController<TModel, TView> : UIStackElement
     
     protected void HideBase()
     {
-        Destroy(gameObject);
-        UIStack.Pop();
+        UIStack.Pop(gameObject);
     }
 }
