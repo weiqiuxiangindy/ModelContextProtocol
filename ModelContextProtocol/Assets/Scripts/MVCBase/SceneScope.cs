@@ -8,7 +8,7 @@ public abstract class SceneScope<TModel, TView, TViewController> : LifetimeScope
 {
     protected override void Awake()
     {
-        parentReference.Object = AppScope.Instance;
+        parentReference.Object = AppRootScope.Instance;
         base.Awake();
     }
 

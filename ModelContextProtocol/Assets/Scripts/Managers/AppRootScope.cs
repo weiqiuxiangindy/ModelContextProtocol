@@ -2,9 +2,9 @@ using Unity.VisualScripting;
 using VContainer;
 using VContainer.Unity;
 
-public class AppScope : LifetimeScope
+public class AppRootScope : LifetimeScope
 {
-    public static AppScope Instance { get; private set; }
+    public static AppRootScope Instance { get; private set; }
 
     protected override void Awake()
     {
